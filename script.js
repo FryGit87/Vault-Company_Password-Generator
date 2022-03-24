@@ -23,6 +23,7 @@ var pwLength;
 var pwUserReq= "";
 var oneEachChar = "";
 var finalPw = "";
+var output
 
 
 function starterInput (){
@@ -35,6 +36,8 @@ function starterInput (){
     starterInput ();
  } else {
     return pwLength;
+
+    
 }
 }
 
@@ -54,7 +57,8 @@ starterInput ();
 
 
 
-function passwordConditions(){
+function passwordConditions (){
+  oneEachChar = "";
   pwUserReq = "";
   lowercase = confirm("Would you like it to contain Lowercase?")
   uppercase = confirm("Would you like it to contain Uppercase?")
@@ -71,7 +75,7 @@ function passwordConditions(){
         firstString += userLowerCase[Math.floor(Math.random() * userLowerCase.length)];
       }
       }
-      oneEachChar += firstString; //oneEachChar - need the value to be global
+      oneEachChar += firstString; 
       console.log(firstString);
       console.log(oneEachChar);
     }
@@ -85,7 +89,7 @@ function passwordConditions(){
       }
       
     }
-    oneEachChar += secondString; //oneEachChar - need the value to be global
+    oneEachChar += secondString; 
     console.log(secondString);
     console.log(oneEachChar);
   }
@@ -98,7 +102,7 @@ function passwordConditions(){
         thirdString += userNumeric[Math.floor(Math.random() * userNumeric.length)];
       }
       }
-      oneEachChar += thirdString; //oneEachChar - need the value to be global
+      oneEachChar += thirdString; 
       console.log(thirdString)
       console.log(oneEachChar);
 
@@ -113,7 +117,7 @@ function passwordConditions(){
         fourthString += userSymbols[Math.floor(Math.random() * userSymbols.length)];
       }
       }
-      oneEachChar += fourthString; //oneEachChar - need the value to be global
+      oneEachChar += fourthString; 
       console.log(fourthString)
       console.log(oneEachChar);
       }
@@ -129,11 +133,12 @@ function passwordConditions(){
 
 
 //The collection of user selections stored in a variable eg.ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
-var output = passwordConditions();
+// var output = passwordConditions();
 
 
 // WORKING PW GENERATOR
 function randomSelector(length) {
+    output = passwordConditions();
     let result = ' ';
     const charactersLength = output.length;
     // oneEachChar.length is solution but need the variable value to be accessible from PW conditions LN 138
@@ -150,10 +155,7 @@ console.log(output); // same as console.log(pwUserReq)
 //console.log('pwLength');
 //console.log(randomSelector(pwLength)) //same as  console.log(result)
 console.log(oneEachChar);
-console.log('--------------------');
-console.log("TO DO STILL:");
-console.log('1. last 4 digits are stagnant, need to shuffle them');
-console.log('2. need to apply output to the dom');
+
 
 
 
@@ -166,11 +168,10 @@ function generatePassword() {
 
 console.log('--------------------');
 console.log('FINAL FINAL FINAL FINAL')
-console.log(generatePassword(finalPw));
+// console.log(generatePassword(finalPw));
 console.log('random selector + user selector');
 console.log('--------------------');
 
-// console.log(result);
 
 
 
@@ -181,10 +182,6 @@ console.log('--------------------');
 
 
 
-
-
-
-// console.log('password generated');
 
 
 
