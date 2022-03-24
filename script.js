@@ -21,6 +21,8 @@ var minLength = 8;
 var maxLength = 128;
 var pwLength;
 var pwUserReq= "";
+var oneEachChar = "";
+var finalPw = "";
 
 
 function starterInput (){
@@ -53,8 +55,8 @@ starterInput ();
 
 
 function passwordConditions(){
-  var pwUserReq = "";
-  var oneEachChar = "";
+  pwUserReq = "";
+  // var oneEachChar = "";
   lowercase = confirm("Would you like it to contain Lowercase?")
   uppercase = confirm("Would you like it to contain Uppercase?")
   numeric = confirm("Would you like it to contain Numbers?")
@@ -69,9 +71,8 @@ function passwordConditions(){
       while (firstString.length < 1) {
         firstString += userLowerCase[Math.floor(Math.random() * userLowerCase.length)];
       }
-
       }
-      oneEachChar += firstString;
+      oneEachChar += firstString; //oneEachChar - need the value to be global
       console.log(firstString);
       console.log(oneEachChar);
     }
@@ -85,7 +86,7 @@ function passwordConditions(){
       }
       
     }
-    oneEachChar += secondString;
+    oneEachChar += secondString; //oneEachChar - need the value to be global
     console.log(secondString);
     console.log(oneEachChar);
   }
@@ -98,7 +99,7 @@ function passwordConditions(){
         thirdString += userNumeric[Math.floor(Math.random() * userNumeric.length)];
       }
       }
-      oneEachChar += thirdString;
+      oneEachChar += thirdString; //oneEachChar - need the value to be global
       console.log(thirdString)
       console.log(oneEachChar);
 
@@ -113,10 +114,9 @@ function passwordConditions(){
         fourthString += userSymbols[Math.floor(Math.random() * userSymbols.length)];
       }
       }
-      oneEachChar += fourthString;
+      oneEachChar += fourthString; //oneEachChar - need the value to be global
       console.log(fourthString)
       console.log(oneEachChar);
-
       }
   
   if (!lowercase && !uppercase && !numeric && !specialChar){
@@ -125,6 +125,7 @@ function passwordConditions(){
     
   }
   return pwUserReq;
+
 }
 
 
@@ -133,20 +134,24 @@ var output = passwordConditions();
 
 
 // WORKING PW GENERATOR
-//need to change the 4 to a dynamic value, eg. user selects 2 conditions, number should be 2.
 function randomSelector(length) {
     let result = ' ';
     const charactersLength = output.length;
-    for ( let i = 4; i < length; i++ ) {
+    // oneEachChar.length is solution but need the variable value to be accessible from PW conditions LN 138
+    //for ( let i = 4; i < length; i++ ) { // the loop I have : STATIC
+    for ( let i = oneEachChar.length; i < length; i++ ) { //the loop I want : DYNAMIC
+
         result += output.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
 }
-console.log('output');
-console.log(output);
-console.log('pwLength');
-console.log(randomSelector(pwLength))
 
+console.log('output');
+console.log(output); // same as console.log(pwUserReq)
+//console.log('pwLength');
+//console.log(randomSelector(pwLength)) //same as  console.log(result)
+console.log(oneEachChar);
+console.log('--------------------');
 console.log("TO DO STILL:");
 console.log('1.a. need to concatenate all the outputs');
 console.log('1.b. remove hard code of 4 in function randomSelector, needs to be dynamic with function passwordConditions');
@@ -155,10 +160,21 @@ console.log('3. need to apply output to the dom');
 
 
 
+function addSelectAndRandom() {
+  finalPw = randomSelector(pwLength) + oneEachChar;
+  return finalPw;
+};
 
 
 
+console.log('--------------------');
 
+console.log('FINAL FINAL FINAL FINAL')
+console.log(addSelectAndRandom(finalPw));
+console.log('random selector + user selector');
+console.log('--------------------');
+
+// console.log(result);
 
 
 
