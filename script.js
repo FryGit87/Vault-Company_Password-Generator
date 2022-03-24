@@ -54,7 +54,7 @@ starterInput ();
 
 function passwordConditions(){
   var pwUserReq = "";
-  // var pwCharSelect = "";
+  var oneEachChar = "";
   lowercase = confirm("Would you like it to contain Lowercase?")
   uppercase = confirm("Would you like it to contain Uppercase?")
   numeric = confirm("Would you like it to contain Numbers?")
@@ -69,9 +69,11 @@ function passwordConditions(){
       while (firstString.length < 1) {
         firstString += userLowerCase[Math.floor(Math.random() * userLowerCase.length)];
       }
-      console.log(firstString);
+
       }
-      
+      oneEachChar += firstString;
+      console.log(firstString);
+      console.log(oneEachChar);
     }
     if (uppercase){
       userUpperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -81,8 +83,11 @@ function passwordConditions(){
       while (secondString.length < 1) {
         secondString += userUpperCase[Math.floor(Math.random() * userUpperCase.length)];
       }
+      
     }
+    oneEachChar += secondString;
     console.log(secondString);
+    console.log(oneEachChar);
   }
     if (numeric){
       userNumeric = '0123456789'
@@ -93,7 +98,10 @@ function passwordConditions(){
         thirdString += userNumeric[Math.floor(Math.random() * userNumeric.length)];
       }
       }
+      oneEachChar += thirdString;
       console.log(thirdString)
+      console.log(oneEachChar);
+
     }
 
     if (specialChar){
@@ -105,7 +113,10 @@ function passwordConditions(){
         fourthString += userSymbols[Math.floor(Math.random() * userSymbols.length)];
       }
       }
+      oneEachChar += fourthString;
       console.log(fourthString)
+      console.log(oneEachChar);
+
       }
   
   if (!lowercase && !uppercase && !numeric && !specialChar){
@@ -117,12 +128,12 @@ function passwordConditions(){
 }
 
 
-//The collection of user selections stored in a variable
+//The collection of user selections stored in a variable eg.ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
 var output = passwordConditions();
 
 
-
 // WORKING PW GENERATOR
+//need to change the 4 to a dynamic value, eg. user selects 2 conditions, number should be 2.
 function randomSelector(length) {
     let result = ' ';
     const charactersLength = output.length;
@@ -137,8 +148,11 @@ console.log('pwLength');
 console.log(randomSelector(pwLength))
 
 console.log("TO DO STILL:");
-console.log('1. need to concatenate all the outputs');
-console.log('2. need to apply output to the dom');
+console.log('1.a. need to concatenate all the outputs');
+console.log('1.b. remove hard code of 4 in function randomSelector, needs to be dynamic with function passwordConditions');
+console.log('2. POSSIBLY: randomize/shuffle the string order');
+console.log('3. need to apply output to the dom');
+
 
 
 
