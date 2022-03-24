@@ -56,7 +56,6 @@ starterInput ();
 
 function passwordConditions(){
   pwUserReq = "";
-  // var oneEachChar = "";
   lowercase = confirm("Would you like it to contain Lowercase?")
   uppercase = confirm("Would you like it to contain Uppercase?")
   numeric = confirm("Would you like it to contain Numbers?")
@@ -153,14 +152,12 @@ console.log(output); // same as console.log(pwUserReq)
 console.log(oneEachChar);
 console.log('--------------------');
 console.log("TO DO STILL:");
-console.log('1.a. need to concatenate all the outputs');
-console.log('1.b. remove hard code of 4 in function randomSelector, needs to be dynamic with function passwordConditions');
-console.log('2. POSSIBLY: randomize/shuffle the string order');
-console.log('3. need to apply output to the dom');
+console.log('1. last 4 digits are stagnant, need to shuffle them');
+console.log('2. need to apply output to the dom');
 
 
 
-function addSelectAndRandom() {
+function generatePassword() {
   finalPw = randomSelector(pwLength) + oneEachChar;
   return finalPw;
 };
@@ -168,9 +165,8 @@ function addSelectAndRandom() {
 
 
 console.log('--------------------');
-
 console.log('FINAL FINAL FINAL FINAL')
-console.log(addSelectAndRandom(finalPw));
+console.log(generatePassword(finalPw));
 console.log('random selector + user selector');
 console.log('--------------------');
 
