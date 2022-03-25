@@ -5,7 +5,6 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
 
 }
@@ -35,13 +34,15 @@ function starterInput (){
     alert('Please select a another number! (Min: 8  -  Max: 128)');
     starterInput ();
  } else {
-    return pwLength;
+  return pwLength;
 
-    
 }
+  console.log(pwLength);
+return pwLength;
 }
+//<--------------------------------------question------------
+//  starterInput (); // need this insde of  passwordConditions
 
-starterInput ();
 
 
 // Replaced this function with 'While string inside passwordConditions()
@@ -60,11 +61,18 @@ starterInput ();
 function passwordConditions (){
   oneEachChar = "";
   pwUserReq = "";
+  
+
+starterInput (); //TESTING THIS INSIDE THE FUNCTION
+
+ console.log(pwLength);
+
+
   lowercase = confirm("Would you like it to contain Lowercase?")
   uppercase = confirm("Would you like it to contain Uppercase?")
   numeric = confirm("Would you like it to contain Numbers?")
   specialChar = confirm("Would you like it to contain Special Characters?")
-    
+
 
     if (lowercase){
       userLowerCase = 'abcdefghijklmnopqrstuvwxyz'
@@ -76,8 +84,6 @@ function passwordConditions (){
       }
       }
       oneEachChar += firstString; 
-      console.log(firstString);
-      console.log(oneEachChar);
     }
     if (uppercase){
       userUpperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -90,8 +96,6 @@ function passwordConditions (){
       
     }
     oneEachChar += secondString; 
-    console.log(secondString);
-    console.log(oneEachChar);
   }
     if (numeric){
       userNumeric = '0123456789'
@@ -103,9 +107,6 @@ function passwordConditions (){
       }
       }
       oneEachChar += thirdString; 
-      console.log(thirdString)
-      console.log(oneEachChar);
-
     }
 
     if (specialChar){
@@ -118,8 +119,6 @@ function passwordConditions (){
       }
       }
       oneEachChar += fourthString; 
-      console.log(fourthString)
-      console.log(oneEachChar);
       }
   
   if (!lowercase && !uppercase && !numeric && !specialChar){
@@ -141,20 +140,15 @@ function randomSelector(length) {
     output = passwordConditions();
     let result = ' ';
     const charactersLength = output.length;
-    // oneEachChar.length is solution but need the variable value to be accessible from PW conditions LN 138
-    //for ( let i = 4; i < length; i++ ) { // the loop I have : STATIC
     for ( let i = oneEachChar.length; i < length; i++ ) { //the loop I want : DYNAMIC
-
         result += output.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
 }
 
-console.log('output');
-console.log(output); // same as console.log(pwUserReq)
-//console.log('pwLength');
+
+
 //console.log(randomSelector(pwLength)) //same as  console.log(result)
-console.log(oneEachChar);
 
 
 
@@ -164,31 +158,5 @@ function generatePassword() {
   return finalPw;
 };
 
-
-
-console.log('--------------------');
-console.log('FINAL FINAL FINAL FINAL')
-// console.log(generatePassword(finalPw));
-console.log('random selector + user selector');
-console.log('--------------------');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//QUESTION
+//PWLENGTH DOES NOT DISPLAY ON FIRST ALERT-INPUT LOOP BUT THEN WILL BE ADDED THEN AFTER
