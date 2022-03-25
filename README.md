@@ -26,8 +26,8 @@ Provide a user-friendly synopsis of the out-going, motivated and resourceful ind
 
 ## **Web App**
 
-![Length Input](./assets/images/length.png.png)
-![Length Error](/assets/images/error1-lengthParameter.png.png)
+![Length Input](./assets/images/length.png)
+![Length Error](/assets/images/error1-lengthParameter.png)
 ![Not a number Error](/assets/images/error2-onlyNumbers.png)
 ![LowerCase Selector](./assets/images/lower.png)
 ![UpperCase Selector](/assets/images/upper.png)
