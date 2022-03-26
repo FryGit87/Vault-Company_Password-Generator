@@ -24,7 +24,9 @@ var oneEachChar = "";
 var finalPw = "";
 var output
 
-
+//Function that collects the numic input from the user, stores the value in pwLength
+//if it is less than 8 or more than 128, user is prompted to reselect within the correct range
+//if value enter is Not a Number, user is prompted to reslect making sure that input is a number
 function starterInput() {
   pwLength = parseInt(
     prompt(
@@ -33,6 +35,7 @@ function starterInput() {
     ),
     10
   );
+
 
   console.log(pwLength);
   if (isNaN(pwLength)) {
@@ -53,14 +56,16 @@ function passwordConditions() {
 
   console.log(pwLength);
 
+  //GATHERING USER INPUT FOR WHAT CHARS ARE REQUIRED IN THE FINAL PASSWORD
   lowercase = confirm("Would you like it to contain Lowercase?");
   uppercase = confirm("Would you like it to contain Uppercase?");
   numeric = confirm("Would you like it to contain Numbers?");
   specialChar = confirm("Would you like it to contain Special Characters?");
 
+  //IF NO CRITERIA IS SELECTED, USER PROMPTED TO SELECT AGAIN UNTIL AT LEAST ONE IS CHOSEN
   if (!lowercase && !uppercase && !numeric && !specialChar) {
     alert("Please select at least ONE of the password criteria.");
-    return;
+    passwordConditions();
   }
 
   if (lowercase) {
@@ -92,7 +97,7 @@ function passwordConditions() {
   }
 
   if (specialChar) {
-    userSymbols = '!@#$%^&*";';
+    userSymbols = '!"#$%&()*+,-./:;<=>?@[]^_`{|}~';
     pwUserReq += userSymbols;
     var fourthString = "";
     fourthString += userSymbols[Math.floor(Math.random() * userSymbols.length)];
@@ -101,9 +106,11 @@ function passwordConditions() {
   console.log(pwUserReq);
   return pwUserReq;
 }
+//pwUserReq colleccts all the selected criteria strings and concatenates them
+//eg.ABCDEFGHIJKLMNOPQRSTUVWXYZ + abcdefghijklmnopqrstuvwxyz + 0123456789 + !"#$%&()*+,-./:;<=>?@[]^_`{|}~
 
-//The collection of user selections stored in a variable eg.ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
-// var output = passwordConditions();
+//oneEachChar selects on random char from the individual string before the concatenate takes place
+//eg. User picks numeric, a number is picked at random from 0123456789 and stored in oneEachChar var
 
 // WORKING PW GENERATOR
 function randomSelector(length) {
@@ -119,12 +126,6 @@ function randomSelector(length) {
     return result;
   }
 }
-
-
-
-//console.log(randomSelector(pwLength)) //same as  console.log(result)
-
-
 
 
 function generatePassword() {
